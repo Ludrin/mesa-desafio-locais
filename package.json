@@ -1,0 +1,19 @@
+{
+  "name": "mesa-desafio-locais",
+  "version": "1.0.0",
+  "description": "Desafio backend no processo de seleção da Mesa",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ludrin/mesa-desafio-locais.git"
+  },
+  "author": "Ernani Ricoy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ludrin/mesa-desafio-locais/issues"
+  },
+  "homepage": "https://github.com/Ludrin/mesa-desafio-locais#readme"
+}

@@ -1,9 +1,11 @@
 const express = require('express');
 const mongoose = require('mongoose');
 
+const userRoutes = require('./routes/user');
+
 const app = express();
 
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -15,13 +17,14 @@ app.use((req, res, next) => {
     next();
 });
 
+app.use('/api/user', userRoutes);
+
 const MONGO_URI = 'mongodb+srv://mesaAdmin:0UvYtmtX7svtfhS5@cluster0.355un.mongodb.net/mesa-local?retryWrites=true';
 const MONGO_OPTIONS = { useNewUrlParser: true, useUnifiedTopology: true };
-
 mongoose
     .connect(MONGO_URI, MONGO_OPTIONS)
     .then(() => {
-        console.log('Conectado no banco de dados!')
-        app.listen(3000);
+        console.log('Conectado no banco de dados.')
+        app.listen(8080);
     })
     .catch(err => console.log('Erro ao inicializar app: ', err));

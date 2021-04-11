@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 
 const userRoutes = require('./routes/user');
+const localRoutes = require('./routes/local');
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/api/user', userRoutes);
+app.use('/api/local', localRoutes);
 
 const MONGO_URI = 'mongodb+srv://mesaAdmin:0UvYtmtX7svtfhS5@cluster0.355un.mongodb.net/mesa-local?retryWrites=true';
 const MONGO_OPTIONS = { useNewUrlParser: true, useUnifiedTopology: true };
@@ -25,6 +27,6 @@ mongoose
     .connect(MONGO_URI, MONGO_OPTIONS)
     .then(() => {
         console.log('Conectado no banco de dados.')
-        app.listen(8080);
+        app.listen(3000);
     })
     .catch(err => console.log('Erro ao inicializar app: ', err));

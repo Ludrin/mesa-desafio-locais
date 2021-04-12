@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 
 const userRoutes = require('./routes/user');
 const localRoutes = require('./routes/local');
+const reviewRoutes = require('./routes/review');
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use((req, res, next) => {
 
 app.use('/api/user', userRoutes);
 app.use('/api/local', localRoutes);
+app.use('/api/review', reviewRoutes);
 
 const MONGO_URI = 'mongodb+srv://mesaAdmin:0UvYtmtX7svtfhS5@cluster0.355un.mongodb.net/mesa-local?retryWrites=true';
 const MONGO_OPTIONS = { useNewUrlParser: true, useUnifiedTopology: true };

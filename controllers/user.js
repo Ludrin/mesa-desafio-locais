@@ -28,31 +28,37 @@ exports.createUser = (req, res, next) => {
                     });
                 });
         });
-}
+};
 
 exports.editUser = (req, res, next) => {
     const userReqBody = req.body;
 
     User.findById(userReqBody._id)
         .then(user => {
-            user.name = userReqBody.name;
-            user.email = userReqBody.email;
+            if (user) {
+                user.name = userReqBody.name;
+                user.email = userReqBody.email;
 
-            user.save()
-                .then(updatedUser => {
-                    res.status(200).json({
-                        message: 'Usuário ' + userReqBody.name + ' atualizado.',
-                        result: updatedUser
+                user.save()
+                    .then(updatedUser => {
+                        res.status(200).json({
+                            message: 'Usuário ' + userReqBody.name + ' atualizado.',
+                            result: updatedUser
+                        });
+                    })
+                    .catch(err => {
+                        const errorMessage = 'Erro ao atualizar usuário: ' + err;
+                        res.status(500).json({
+                            message: errorMessage
+                        });
                     });
-                })
-                .catch(err => {
-                    const errorMessage = 'Erro ao atualizar usuário: ' + err;
-                    res.status(500).json({
-                        message: errorMessage
-                    });
+            } else {
+                res.status(404).json({
+                    message: 'Usuário com id ' + userReqBody_id + ' não encontrado.'
                 });
+            }
         })
-}
+};
 
 exports.changePassword = (req, res, next) => {
     const userReqBody = req.body;
@@ -78,21 +84,25 @@ exports.changePassword = (req, res, next) => {
                         });
                 });
         });
-}
+};
 
 exports.getUser = (req, res, next) => {
     const userId = req.params.userId;
 
     User.findById(userId)
         .then(existingUser => {
-            const user = { ...existingUser._doc };
-            delete user.password;
-            res.status(200).json({
-                message: 'Usuário ' + existingUser.name + ' retornado.',
-                result: user
-            });
+            if (existingUser) {
+                res.status(200).json({
+                    message: 'Usuário ' + existingUser.name + ' retornado.',
+                    result: existingUser
+                });
+            } else {
+                res.status(404).json({
+                    message: 'Usuário com id ' + userId + ' não encontrado.'
+                });
+            }
         })
-}
+};
 
 exports.userLogin = (req, res, next) => {
     let existingUser;
@@ -127,7 +137,7 @@ exports.userLogin = (req, res, next) => {
                 message: 'Erro ao autenticar usuário: ' + err
             });
         });
-}
+};
 
 function generateToken(user) {
     const payload = {

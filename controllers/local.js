@@ -1,4 +1,4 @@
-const Local = require("../models/local");
+const Local = require('../models/local');
 
 exports.createLocal = (req, res, next) => {
     const localReqBody = req.body;
@@ -44,10 +44,15 @@ exports.getLocal = (req, res, next) => {
     Local.findById(localId)
         .then(existingLocal => {
             if (existingLocal) {
-                res.status(200).json({
-                    message: 'Local ' + existingLocal.name + ' retornado.',
-                    result: existingLocal
-                });
+                existingLocal
+                    .populate('reviews.reviewId')
+                    .execPopulate()
+                    .then(populatedLocal => {
+                        res.status(200).json({
+                            message: 'Local ' + existingLocal.name + ' retornado.',
+                            result: populatedLocal
+                        });
+                    });
             } else {
                 res.status(404).json({
                     message: 'Local com id ' + localId + ' não encontrado.'
@@ -99,7 +104,7 @@ exports.getMapLocal = (req, res, next) => {
     ], (err, data) => {
         if (err) {
             res.status(500).json({
-                message: 'Erro ao buscar local por proximidade: ' +  err
+                message: 'Erro ao buscar local por proximidade: ' + err
             });
         } else {
             res.status(200).json({

@@ -1,6 +1,7 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-const pointSchema = new mongoose.Schema({
+const pointSchema = new Schema({
     type: {
         type: String,
         enum: ['Point'],
@@ -12,7 +13,7 @@ const pointSchema = new mongoose.Schema({
     }
 });
 
-const localSchema = mongoose.Schema({
+const localSchema = Schema({
     name: {
         type: String,
         required: true
@@ -51,7 +52,32 @@ const localSchema = mongoose.Schema({
             type: String,
             required: true
         }
-    }
+    },
+    reviews: [
+        {
+            reviewId: {
+                type: Schema.Types.ObjectId,
+                ref: 'Review',
+                required: true
+            }
+        }
+    ]
 });
 
-module.exports = mongoose.model("Local", localSchema);
+localSchema.methods.addReview = function (review) {
+    // Calcula a nova nota média
+    const average = this.scoreAverage;
+    const qtdReviews = this.reviews.length;
+    const totalScore = average * qtdReviews;
+
+    const newTotalScore = totalScore + review.score;
+    const newAverage = newTotalScore / (qtdReviews + 1);
+    this.scoreAverage = newAverage;
+
+    // Adiciona o ID da nova análise na lista
+    this.reviews.push({ reviewId: review._id });
+
+    return this.save();
+};
+
+module.exports = mongoose.model('Local', localSchema);

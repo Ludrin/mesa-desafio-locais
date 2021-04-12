@@ -6,19 +6,27 @@ Esse projeto busca implementar uma API REST simples de um sistema de cadastro e 
 ## Tecnologias
 - Node.js + express
 - MongoDB + Mongoose
-- Pacotes para gerar token de autenticação, encriptar senha e validação de esquema.
+- Pacotes para gerar token de autenticação, encriptar senha, validação de esquema e otimização de pacote gerado no deploy.
 
 ## Banco de dados
 O sistema usa uma solução em nuvem disponibilizado pelo próprio MongoDB (Atlas). Foi criado um usuário e senha especialmente para esse sistema que já está preenchido no código, então não é necessário nenhuma configuração para acessar o banco. Já existem dados pré populados.
 _O mongoose cuida das validações dos objetos que se tenta cadastrar usando esquemas._
 
-## Uso local
+## Rodar local
 ```sh
 git clone https://github.com/Ludrin/mesa-desafio-locais.git
 npm install
 npm start
 ```
-Por padrão o sistema roda na porta 3000.
+
+Por padrão o sistema roda na porta 3000. Dessa forma, o prefixo das requisições deve ser `http://localhost:3000/`.
+_Exemplo: `http://localhost:3000//api/user/login`_.
+
+## Rodar remoto
+Foi feito deploy do projeto no Heroku na URL `https://mesa-desafio-locais.herokuapp.com/`. Como o projeto não tem frontend nada aparecerá se acessar a URL pelo navegador. Ela deve ser usada no prefixo das requisições.
+
+Ao fazer requisições REST para o Heroku é necessário omitir a porta. Dessa forma, o prefixo das requisições deve ser `https://mesa-desafio-locais.herokuapp.com/`.
+_Exemplo: `https://mesa-desafio-locais.herokuapp.com/api/user/login`_.
 
 ## Usando o sistema
 

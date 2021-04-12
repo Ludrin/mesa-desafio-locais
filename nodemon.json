@@ -1,0 +1,7 @@
+{
+    "env": {
+        "MONGO_USER": "mesaAdmin",
+        "MONGO_PASSWORD": "0UvYtmtX7svtfhS5",
+        "MONGO_DB_NAME": "mesa-local"
+    }
+}

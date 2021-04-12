@@ -1,0 +1,1452 @@
+{
+	"info": {
+		"_postman_id": "9f1dacd1-f055-44e8-9442-e9661e64b5d3",
+		"name": "Mesa",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Create user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Mesa\",\r\n    \"email\": \"mesa@mesa.com\",\r\n    \"password\": \"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{IP}}:{{PORT}}/api/user/signup",
+							"protocol": "http",
+							"host": [
+								"{{IP}}"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"api",
+								"user",
+								"signup"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create user success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Ernani\",\r\n    \"email\": \"teste@email.com\",\r\n    \"password\": \"1234\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://{{IP}}:{{PORT}}/api/user/signup",
+									"protocol": "http",
+									"host": [
+										"{{IP}}"
+									],
+									"port": "{{PORT}}",
+									"path": [
+										"api",
+										"user",
+										"signup"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "OPTIONS, GET, POST, PUT, PATCH, DELETE"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "205"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"cd-tdR9hyP3MTu0JW4ih3gIXzev1QE\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 10 Apr 2021 17:49:10 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Usuário Ernani criado.\",\n    \"result\": {\n        \"_id\": \"6071e515dd05761f741abd3e\",\n        \"name\": \"Ernani\",\n        \"email\": \"teste@email.com\",\n        \"password\": \"$2b$10$2S/N.Ne8hXfRaabGRZNU2Opldrf06F3OKem54/N.TbGx1ol2ZSU2i\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "User login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"pm.collectionVariables.set(\"jwt_token\", jsonData.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"mesa@mesa.com\",\r\n    \"password\": \"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{IP}}:{{PORT}}/api/user/login",
+							"protocol": "http",
+							"host": [
+								"{{IP}}"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"api",
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "User login success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"ernani@email.com\",\r\n    \"password\": \"123456\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://{{IP}}:{{PORT}}/api/user/login",
+									"protocol": "http",
+									"host": [
+										"{{IP}}"
+									],
+									"port": "{{PORT}}",
+									"path": [
+										"api",
+										"user",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "OPTIONS, GET, POST, PUT, PATCH, DELETE"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "277"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"115-gmGwZ/ZT9O5Zj+GleTH/KLPleYk\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 10 Apr 2021 19:38:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVybmFuaUBlbWFpbC5jb20iLCJ1c2VySWQiOiI2MDcxZTUxNWRkMDU3NjFmNzQxYWJkM2UiLCJpYXQiOjE2MTgwODM1MjksImV4cCI6MTYxODA4NzEyOX0.B3UaCZqgJlQ4pG8cnLEaCjiOGNXL-WvMzMg6gbjaSHc\",\n    \"expiresIn\": 3600,\n    \"userId\": \"6071e515dd05761f741abd3e\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Edit user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\": \"6071e515dd05761f741abd3e\",\r\n    \"name\": \"Ernani\",\r\n    \"email\": \"ernani@email.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{IP}}:{{PORT}}/api/user/edit",
+							"protocol": "http",
+							"host": [
+								"{{IP}}"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"api",
+								"user",
+								"edit"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Edit user success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"_id\": \"6071e515dd05761f741abd3e\",\r\n    \"name\": \"Ernani\",\r\n    \"email\": \"ernani@email.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://{{IP}}:{{PORT}}/api/user/edit",
+									"protocol": "http",
+									"host": [
+										"{{IP}}"
+									],
+									"port": "{{PORT}}",
+									"path": [
+										"api",
+										"user",
+										"edit"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "OPTIONS, GET, POST, PUT, PATCH, DELETE"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "210"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"d2-rgig4LBCZp5mnZaBB3mJb7+dWxk\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 10 Apr 2021 17:58:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Usuário Ernani atualizado.\",\n    \"result\": {\n        \"_id\": \"6071e515dd05761f741abd3e\",\n        \"name\": \"Ernani\",\n        \"email\": \"ernani@email.com\",\n        \"password\": \"$2b$10$2S/N.Ne8hXfRaabGRZNU2Opldrf06F3OKem54/N.TbGx1ol2ZSU2i\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{IP}}:{{PORT}}/api/user/607464d10ed6600b804ab120",
+							"protocol": "http",
+							"host": [
+								"{{IP}}"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"api",
+								"user",
+								"607464d10ed6600b804ab120"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get user success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://{{IP}}:{{PORT}}/api/user/6071e515dd05761f741abd3e",
+									"protocol": "http",
+									"host": [
+										"{{IP}}"
+									],
+									"port": "{{PORT}}",
+									"path": [
+										"api",
+										"user",
+										"6071e515dd05761f741abd3e"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "OPTIONS, GET, POST, PUT, PATCH, DELETE"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "135"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"87-DIYOXXB6ymC0+MdbwBS+p8AcINE\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 10 Apr 2021 18:03:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Usuário Ernani retornado.\",\n    \"result\": {\n        \"_id\": \"6071e515dd05761f741abd3e\",\n        \"name\": \"Ernani\",\n        \"email\": \"ernani@email.com\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Change password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\": \"6071e515dd05761f741abd3e\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{IP}}:{{PORT}}/api/user/change-password",
+							"protocol": "http",
+							"host": [
+								"{{IP}}"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"api",
+								"user",
+								"change-password"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Change password success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"_id\": \"6071e515dd05761f741abd3e\",\r\n    \"password\": \"123456\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://{{IP}}:{{PORT}}/api/user/change-password",
+									"protocol": "http",
+									"host": [
+										"{{IP}}"
+									],
+									"port": "{{PORT}}",
+									"path": [
+										"api",
+										"user",
+										"change-password"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "OPTIONS, GET, POST, PUT, PATCH, DELETE"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "219"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"db-Az6r/9VaNM5J4i0/skEcNhzonYY\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 10 Apr 2021 19:34:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Senha do usuário Ernani atualizada.\",\n    \"result\": {\n        \"_id\": \"6071e515dd05761f741abd3e\",\n        \"name\": \"Ernani\",\n        \"email\": \"ernani@email.com\",\n        \"password\": \"$2b$10$jsBlHXLyaBNJBqiFuDgi/.tkCDRdPYhL06aR2C3YZ85KUi3uZxwZG\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Local",
+			"item": [
+				{
+					"name": "Create local 1",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Mesa\",\r\n    \"location\": {\r\n        \"latitude\": -8.064469920709202,\r\n        \"longitude\": -34.87389077760825,\r\n        \"roadName\": \"Alfândega\",\r\n        \"roadNumber\": 35,\r\n        \"zipCode\": 50030030,\r\n        \"city\": \"Recife\",\r\n        \"state\": \"Pernambuco\",\r\n        \"country\": \"Brasil\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{IP}}:{{PORT}}/api/local/create",
+							"protocol": "http",
+							"host": [
+								"{{IP}}"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"api",
+								"local",
+								"create"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create local 1 success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Mesa\",\r\n    \"location\": {\r\n        \"latitude\": -8.064469920709202,\r\n        \"longitude\": -34.87389077760825,\r\n        \"roadName\": \"Alfândega\",\r\n        \"roadNumber\": 35,\r\n        \"zipCode\": 50030030,\r\n        \"city\": \"Recife\",\r\n        \"state\": \"Pernambuco\",\r\n        \"country\": \"Brasil\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://{{IP}}:{{PORT}}/api/local/create",
+									"protocol": "http",
+									"host": [
+										"{{IP}}"
+									],
+									"port": "{{PORT}}",
+									"path": [
+										"api",
+										"local",
+										"create"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "OPTIONS, GET, POST, PUT, PATCH, DELETE"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "358"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"166-zi6JmlAUdk0fJIF8FBai+e0xlHM\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Apr 2021 20:18:47 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Local Mesa criado.\",\n    \"result\": {\n        \"_id\": \"607359a6e17b671cd4ed8e90\",\n        \"name\": \"Mesa\",\n        \"scoreAverage\": 0,\n        \"location\": {\n            \"mapPoint\": {\n                \"coordinates\": [\n                    -34.87389077760825,\n                    -8.064469920709202\n                ],\n                \"_id\": \"607359a6e17b671cd4ed8e91\",\n                \"type\": \"Point\"\n            },\n            \"roadName\": \"Alfândega\",\n            \"roadNumber\": 35,\n            \"zipCode\": 50030030,\n            \"city\": \"Recife\",\n            \"state\": \"Pernambuco\",\n            \"country\": \"Brasil\"\n        },\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Create local 2",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Parrillada Steak House\",\r\n    \"location\": {\r\n        \"latitude\": -8.065091331737577,\r\n        \"longitude\": -34.87406778469086,\r\n        \"roadName\": \"Alfândega\",\r\n        \"roadNumber\": 35,\r\n        \"zipCode\": 50030030,\r\n        \"city\": \"Recife\",\r\n        \"state\": \"Pernambuco\",\r\n        \"country\": \"Brasil\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{IP}}:{{PORT}}/api/local/create",
+							"protocol": "http",
+							"host": [
+								"{{IP}}"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"api",
+								"local",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create local 3",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Posto Petrobras\",\r\n    \"location\": {\r\n        \"latitude\": -8.06533034288396,\r\n        \"longitude\": -34.87255501880407,\r\n        \"roadName\": \"Alfredo Lisboa\",\r\n        \"roadNumber\": 173,\r\n        \"zipCode\": 50030150,\r\n        \"city\": \"Recife\",\r\n        \"state\": \"Pernambuco\",\r\n        \"country\": \"Brasil\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{IP}}:{{PORT}}/api/local/create",
+							"protocol": "http",
+							"host": [
+								"{{IP}}"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"api",
+								"local",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create local 4",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Laboratório Parque Amorim\",\r\n    \"location\": {\r\n        \"latitude\": -8.051996594736016,\r\n        \"longitude\": -34.89395670163073,\r\n        \"roadName\": \"João Fernandes Viêira\",\r\n        \"roadNumber\": 699,\r\n        \"zipCode\": 50050200,\r\n        \"city\": \"Recife\",\r\n        \"state\": \"Pernambuco\",\r\n        \"country\": \"Brasil\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{IP}}:{{PORT}}/api/local/create",
+							"protocol": "http",
+							"host": [
+								"{{IP}}"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"api",
+								"local",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get local",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{IP}}:{{PORT}}/api/local/60735a13e17b671cd4ed8e96",
+							"protocol": "http",
+							"host": [
+								"{{IP}}"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"api",
+								"local",
+								"60735a13e17b671cd4ed8e96"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get local success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://{{IP}}:{{PORT}}/api/local/607359a6e17b671cd4ed8e90",
+									"protocol": "http",
+									"host": [
+										"{{IP}}"
+									],
+									"port": "{{PORT}}",
+									"path": [
+										"api",
+										"local",
+										"607359a6e17b671cd4ed8e90"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "OPTIONS, GET, POST, PUT, PATCH, DELETE"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "361"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"169-A3m+ABHD/P3kgwWPd5VW+0U4HW4\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Apr 2021 20:23:37 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Local Mesa retornado.\",\n    \"result\": {\n        \"location\": {\n            \"mapPoint\": {\n                \"coordinates\": [\n                    -34.87389077760825,\n                    -8.064469920709202\n                ],\n                \"_id\": \"607359a6e17b671cd4ed8e91\",\n                \"type\": \"Point\"\n            },\n            \"roadName\": \"Alfândega\",\n            \"roadNumber\": 35,\n            \"zipCode\": 50030030,\n            \"city\": \"Recife\",\n            \"state\": \"Pernambuco\",\n            \"country\": \"Brasil\"\n        },\n        \"_id\": \"607359a6e17b671cd4ed8e90\",\n        \"name\": \"Mesa\",\n        \"scoreAverage\": 0,\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get locals list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{IP}}:{{PORT}}/api/local/list",
+							"protocol": "http",
+							"host": [
+								"{{IP}}"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"api",
+								"local",
+								"list"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get locals list success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://{{IP}}:{{PORT}}/api/local/list",
+									"protocol": "http",
+									"host": [
+										"{{IP}}"
+									],
+									"port": "{{PORT}}",
+									"path": [
+										"api",
+										"local",
+										"list"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "OPTIONS, GET, POST, PUT, PATCH, DELETE"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1409"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"581-btAzahBhbaImN0t2tM8nIQeOJkc\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Apr 2021 20:23:55 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Locais retornados em ordem alfabética de nome.\",\n    \"result\": [\n        {\n            \"location\": {\n                \"mapPoint\": {\n                    \"coordinates\": [\n                        -34.89395670163073,\n                        -8.051996594736016\n                    ],\n                    \"_id\": \"60735a13e17b671cd4ed8e97\",\n                    \"type\": \"Point\"\n                },\n                \"roadName\": \"João Fernandes Viêira\",\n                \"roadNumber\": 699,\n                \"zipCode\": 50050200,\n                \"city\": \"Recife\",\n                \"state\": \"Pernambuco\",\n                \"country\": \"Brasil\"\n            },\n            \"_id\": \"60735a13e17b671cd4ed8e96\",\n            \"name\": \"Laboratório Parque Amorim\",\n            \"scoreAverage\": 0,\n            \"__v\": 0\n        },\n        {\n            \"location\": {\n                \"mapPoint\": {\n                    \"coordinates\": [\n                        -34.87389077760825,\n                        -8.064469920709202\n                    ],\n                    \"_id\": \"607359a6e17b671cd4ed8e91\",\n                    \"type\": \"Point\"\n                },\n                \"roadName\": \"Alfândega\",\n                \"roadNumber\": 35,\n                \"zipCode\": 50030030,\n                \"city\": \"Recife\",\n                \"state\": \"Pernambuco\",\n                \"country\": \"Brasil\"\n            },\n            \"_id\": \"607359a6e17b671cd4ed8e90\",\n            \"name\": \"Mesa\",\n            \"scoreAverage\": 0,\n            \"__v\": 0\n        },\n        {\n            \"location\": {\n                \"mapPoint\": {\n                    \"coordinates\": [\n                        -34.87406778469086,\n                        -8.065091331737577\n                    ],\n                    \"_id\": \"607359c5e17b671cd4ed8e93\",\n                    \"type\": \"Point\"\n                },\n                \"roadName\": \"Alfândega\",\n                \"roadNumber\": 35,\n                \"zipCode\": 50030030,\n                \"city\": \"Recife\",\n                \"state\": \"Pernambuco\",\n                \"country\": \"Brasil\"\n            },\n            \"_id\": \"607359c5e17b671cd4ed8e92\",\n            \"name\": \"Parrillada Steak House\",\n            \"scoreAverage\": 0,\n            \"__v\": 0\n        },\n        {\n            \"location\": {\n                \"mapPoint\": {\n                    \"coordinates\": [\n                        -34.87255501880407,\n                        -8.06533034288396\n                    ],\n                    \"_id\": \"607359ede17b671cd4ed8e95\",\n                    \"type\": \"Point\"\n                },\n                \"roadName\": \"Alfredo Lisboa\",\n                \"roadNumber\": 173,\n                \"zipCode\": 50030150,\n                \"city\": \"Recife\",\n                \"state\": \"Pernambuco\",\n                \"country\": \"Brasil\"\n            },\n            \"_id\": \"607359ede17b671cd4ed8e94\",\n            \"name\": \"Posto Petrobras\",\n            \"scoreAverage\": 0,\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get locals map",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"latitude\": -8.064469920709202,\r\n    \"longitude\": -34.87389077760825,\r\n    \"meterRadius\": \"1000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{IP}}:{{PORT}}/api/local/map",
+							"protocol": "http",
+							"host": [
+								"{{IP}}"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"api",
+								"local",
+								"map"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get locals map success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"latitude\": -8.064469920709202,\r\n    \"longitude\": -34.87389077760825,\r\n    \"meterRadius\": \"1000\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://{{IP}}:{{PORT}}/api/local/map",
+									"protocol": "http",
+									"host": [
+										"{{IP}}"
+									],
+									"port": "{{PORT}}",
+									"path": [
+										"api",
+										"local",
+										"map"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "OPTIONS, GET, POST, PUT, PATCH, DELETE"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1137"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"471-JKvk8p585w0/fch+AGop9tT/P3w\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Apr 2021 20:25:44 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Locais retornados em ordem de proximidade de 1000 metros.\",\n    \"result\": [\n        {\n            \"_id\": \"607359a6e17b671cd4ed8e90\",\n            \"name\": \"Mesa\",\n            \"scoreAverage\": 0,\n            \"location\": {\n                \"mapPoint\": {\n                    \"coordinates\": [\n                        -34.87389077760825,\n                        -8.064469920709202\n                    ],\n                    \"_id\": \"607359a6e17b671cd4ed8e91\",\n                    \"type\": \"Point\"\n                },\n                \"roadName\": \"Alfândega\",\n                \"roadNumber\": 35,\n                \"zipCode\": 50030030,\n                \"city\": \"Recife\",\n                \"state\": \"Pernambuco\",\n                \"country\": \"Brasil\"\n            },\n            \"__v\": 0,\n            \"distance\": 0\n        },\n        {\n            \"_id\": \"607359c5e17b671cd4ed8e92\",\n            \"name\": \"Parrillada Steak House\",\n            \"scoreAverage\": 0,\n            \"location\": {\n                \"mapPoint\": {\n                    \"coordinates\": [\n                        -34.87406778469086,\n                        -8.065091331737577\n                    ],\n                    \"_id\": \"607359c5e17b671cd4ed8e93\",\n                    \"type\": \"Point\"\n                },\n                \"roadName\": \"Alfândega\",\n                \"roadNumber\": 35,\n                \"zipCode\": 50030030,\n                \"city\": \"Recife\",\n                \"state\": \"Pernambuco\",\n                \"country\": \"Brasil\"\n            },\n            \"__v\": 0,\n            \"distance\": 71.87323499778726\n        },\n        {\n            \"_id\": \"607359ede17b671cd4ed8e94\",\n            \"name\": \"Posto Petrobras\",\n            \"scoreAverage\": 0,\n            \"location\": {\n                \"mapPoint\": {\n                    \"coordinates\": [\n                        -34.87255501880407,\n                        -8.06533034288396\n                    ],\n                    \"_id\": \"607359ede17b671cd4ed8e95\",\n                    \"type\": \"Point\"\n                },\n                \"roadName\": \"Alfredo Lisboa\",\n                \"roadNumber\": 173,\n                \"zipCode\": 50030150,\n                \"city\": \"Recife\",\n                \"state\": \"Pernambuco\",\n                \"country\": \"Brasil\"\n            },\n            \"__v\": 0,\n            \"distance\": 175.6390973991848\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Review",
+			"item": [
+				{
+					"name": "Create Review",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"score\": 4,\r\n    \"comment\": \"Um lugar bom\",\r\n    \"localId\": \"60735a13e17b671cd4ed8e96\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{IP}}:{{PORT}}/api/review/create",
+							"protocol": "http",
+							"host": [
+								"{{IP}}"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"api",
+								"review",
+								"create"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Review success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"score\": 5,\r\n    \"comment\": \"Um ótimo lugar para se trabalhar\",\r\n    \"localId\": \"607359a6e17b671cd4ed8e90\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://{{IP}}:{{PORT}}/api/review/create",
+									"protocol": "http",
+									"host": [
+										"{{IP}}"
+									],
+									"port": "{{PORT}}",
+									"path": [
+										"api",
+										"review",
+										"create"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "OPTIONS, GET, POST, PUT, PATCH, DELETE"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "211"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"d3-PPQhE8gb8MMlPw9RzvUgop4AOGk\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 12 Apr 2021 16:19:14 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Análise criada.\",\n    \"result\": {\n        \"_id\": \"6074730135684814ccd2a731\",\n        \"score\": 5,\n        \"comment\": \"Um ótimo lugar para se trabalhar\",\n        \"userId\": \"6071e515dd05761f741abd3e\",\n        \"localId\": \"607359a6e17b671cd4ed8e90\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Review",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{IP}}:{{PORT}}/api/review/60746625ea67ce1568daa1d3",
+							"protocol": "http",
+							"host": [
+								"{{IP}}"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"api",
+								"review",
+								"60746625ea67ce1568daa1d3"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Review success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://{{IP}}:{{PORT}}/api/review/6074730135684814ccd2a731",
+									"protocol": "http",
+									"host": [
+										"{{IP}}"
+									],
+									"port": "{{PORT}}",
+									"path": [
+										"api",
+										"review",
+										"6074730135684814ccd2a731"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "OPTIONS, GET, POST, PUT, PATCH, DELETE"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "214"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"d6-NJ1EiucB9ds+eTHkAro4eNGP4fk\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 12 Apr 2021 16:19:24 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Análise retornada.\",\n    \"result\": {\n        \"_id\": \"6074730135684814ccd2a731\",\n        \"score\": 5,\n        \"comment\": \"Um ótimo lugar para se trabalhar\",\n        \"userId\": \"6071e515dd05761f741abd3e\",\n        \"localId\": \"607359a6e17b671cd4ed8e90\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "2d6fb7ef-7065-4911-bd69-9fe7f7bf9497",
+			"key": "jwt_token",
+			"value": ""
+		},
+		{
+			"id": "86a1997a-40da-4db9-a28d-03fe264f86f4",
+			"key": "IP",
+			"value": "localhost"
+		},
+		{
+			"id": "9db8c38c-015e-48b3-916a-3390cc3d1904",
+			"key": "PORT",
+			"value": "3000"
+		}
+	]
+}

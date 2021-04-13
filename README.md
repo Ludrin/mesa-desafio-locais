@@ -2,6 +2,7 @@
 ## _Ernani Ricoy_
 
 Esse projeto busca implementar uma API REST simples de um sistema de cadastro e avaliação de locais.
+Foram cadastrados lugares ao redor da Mesa Mobile Thinking em Recife.
 
 ## Tecnologias
 - Node.js + express

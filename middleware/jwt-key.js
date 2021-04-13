@@ -1,1 +1,0 @@
-exports.jwtKey = 'chave_jwt_secreta_para_desafio_backend_mesa';

@@ -2,6 +2,7 @@
     "env": {
         "MONGO_USER": "mesaAdmin",
         "MONGO_PASSWORD": "0UvYtmtX7svtfhS5",
-        "MONGO_DB_NAME": "mesa-local"
+        "MONGO_DB_NAME": "mesa-local",
+        "JWT_KEY": "chave_jwt_secreta_para_desafio_backend_mesa"
     }
 }

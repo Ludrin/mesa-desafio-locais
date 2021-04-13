@@ -1,6 +1,5 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const jwtKey = require('../middleware/jwt-key').jwtKey;
 
 const User = require("../models/user");
 
@@ -145,7 +144,7 @@ function generateToken(user) {
         userId: user._id
     };
 
-    const secret = jwtKey;
+    const secret = process.env.JWT_KEY;
 
     const options = {
         expiresIn: '1h'
